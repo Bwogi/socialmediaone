@@ -4,7 +4,7 @@ const db = config.get('mongoURI')
 
 const connectDB = async () =>{
 try{
-    mongoose.connect(db, {
+   await mongoose.connect(db, {
         // object helps with deprecated functionality. It must be used
         useNewUrlParser: true, 
     })
