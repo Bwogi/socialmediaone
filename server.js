@@ -2,8 +2,9 @@ const express = require('express');
 const connectDB = require('./config/db')
 const app = express();
 
-// lets connect to the Database
-connectDB();
+// to access the URL body(req.body), we need to initialise this middleware 
+app.use(express.json({extended: false}))
+
 
 app.get('/',(req,res)=>res.send('API Running...'))
 
@@ -14,6 +15,6 @@ app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/profiles', require('./routes/api/profiles'));
 
 
-const PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, ()=>console.log(`Server started on port ${PORT}`))
+app.listen(PORT, ()=> console.log(`Server started on port ${PORT}`))
